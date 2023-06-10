@@ -20,6 +20,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 public class Student {
 	@Id
 	@Column(name = "stu_id")
+	@Getter @Setter
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer stuId;
 
@@ -44,10 +45,12 @@ public class Student {
 	private String className;
 
 	@LastModifiedDate
+	@Getter @Setter
 	@Column(name = "updated_at")
 	private Timestamp updatedAt;
 
 	@CreatedDate
+	@Getter @Setter
 	@Column(name = "created_at", updatable = false)
 	private Timestamp createdAt;
 	
