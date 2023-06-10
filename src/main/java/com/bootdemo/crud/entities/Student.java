@@ -1,87 +1,55 @@
 package com.bootdemo.crud.entities;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
-@Table(name = "Students")
+@AllArgsConstructor
+@NoArgsConstructor
+@EntityListeners(AuditingEntityListener.class)
+@Table(name = "students")
 public class Student {
 	@Id
 	@Column(name = "stu_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer stuId;
+
+	@Getter @Setter
 	@Column(name = "full_name")
 	private String fullName;
+
+	@Getter @Setter
 	@Column(name = "gender")
 	private Boolean gender;
+
+	@Getter @Setter
 	@Column(name = "birthday")
 	private Date birthday;
+
+	@Getter @Setter
 	@Column(name = "address")
 	private String address;
+
+	@Getter @Setter
 	@Column(name = "class_name")
 	private String className;
+
+	@LastModifiedDate
+	@Column(name = "updated_at")
+	private Timestamp updatedAt;
+
+	@CreatedDate
+	@Column(name = "created_at", updatable = false)
+	private Timestamp createdAt;
 	
-	public Student() {
-		// TODO Auto-generated constructor stub
-	}
 
-	public Student(Integer stuId, String fullName, Boolean gender, Date birthday, String address, String className) {
-		super();
-		this.stuId = stuId;
-		this.fullName = fullName;
-		this.gender = gender;
-		this.birthday = birthday;
-		this.address = address;
-		this.className = className;
-	}
-
-	public Integer getStuId() {
-		return stuId;
-	}
-
-	public void setStuId(Integer stuId) {
-		this.stuId = stuId;
-	}
-
-	public String getFullName() {
-		return fullName;
-	}
-
-	public void setFullName(String fullName) {
-		this.fullName = fullName;
-	}
-
-	public Boolean getGender() {
-		return gender;
-	}
-
-	public void setGender(Boolean gender) {
-		this.gender = gender;
-	}
-
-	public Date getBirthday() {
-		return birthday;
-	}
-
-	public void setBirthday(Date birthday) {
-		this.birthday = birthday;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public String getClassName() {
-		return className;
-	}
-
-	public void setClassName(String className) {
-		this.className = className;
-	}
-	
 }
