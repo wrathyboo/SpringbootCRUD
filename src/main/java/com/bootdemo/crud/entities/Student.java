@@ -45,12 +45,12 @@ public class Student {
 	private String className;
 
 	@LastModifiedDate
-	@Getter @Setter
+	@Getter
 	@Column(name = "updated_at")
 	private Timestamp updatedAt;
 
 	@CreatedDate
-	@Getter @Setter
+	@Getter
 	@Column(name = "created_at", updatable = false)
 	private Timestamp createdAt;
 	
